@@ -1,107 +1,19 @@
 import useSWR, { mutate } from "swr"
+import type {
+  Sale,
+  Task,
+  TeamMember,
+  CallLog,
+  Transaction,
+  AttendanceRecord,
+  Student,
+  Feedback,
+  FollowUp,
+  Lead,
+} from "@/types"
 
-// ─── Types ────────────────────────────────────────────────────────────────────
-
-export interface Sale {
-  id: string
-  customerName: string
-  course: string
-  amount: number
-  quantity: number
-  salesperson: string
-  date: string
-  status: "completed" | "pending" | "cancelled"
-}
-
-export interface Task {
-  id: string
-  title: string
-  assignee: string
-  dueDate: string
-  priority: "high" | "medium" | "low"
-  completed: boolean
-}
-
-export interface TeamMember {
-  id: string
-  name: string
-  role: string
-  sales: number
-  deals: number
-  target: number
-  avatar: string
-  attendanceDays: number
-}
-
-export interface CallLog {
-  id: string
-  employeeName: string
-  callDate: string
-  callCount: number
-  notes?: string
-}
-
-export interface Transaction {
-  id: string
-  date: string
-  amount: number
-  type: "payment" | "refund" | "discount"
-  description: string
-  status: "paid" | "pending" | "overdue"
-}
-
-export interface AttendanceRecord {
-  id: string
-  sessionDate: string
-  sessionTitle: string
-  lecturer: string
-  status: "present" | "absent" | "excused"
-  notes?: string
-}
-
-export interface Student {
-  id: string
-  name: string
-  phone: string
-  email: string
-  course: string
-  enrolledDate: string
-  salesperson: string
-  totalFees: number
-  paidAmount: number
-  transactions: Transaction[]
-  attendance: AttendanceRecord[]
-}
-
-export interface Feedback {
-  id: string
-  date: string
-  notes: string
-  sentiment: "positive" | "neutral" | "negative"
-}
-
-export interface FollowUp {
-  id: string
-  scheduledDate: string
-  notes: string
-  status: "pending" | "done" | "cancelled"
-  type: "call" | "whatsapp" | "email" | "meeting"
-  createdAt?: string
-}
-
-export interface Lead {
-  id: string
-  name: string
-  phone: string
-  email?: string
-  interestedCourse: string
-  assignedTo: string
-  status: "new" | "contacted" | "interested" | "enrolled" | "lost"
-  source: string
-  createdAt: string
-  feedback: Feedback[]
-  followUps: FollowUp[]
-}
+// Re-export types for backward compatibility
+export type { Sale, Task, TeamMember, CallLog, Transaction, AttendanceRecord, Student, Feedback, FollowUp, Lead }
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
